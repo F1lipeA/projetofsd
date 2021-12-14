@@ -10,11 +10,11 @@ public class serverApp {
         
         Scanner read = new Scanner(System.in);
         
-        System.out.println("Insira o número de identificação: ");
+        System.out.println("Insira o numero de identificacao: ");
         
         n_identificacao = read.nextLine();
         
-        System.out.println("Número de identificação" + n_identificacao);
+        System.out.println("Numero de identificacao" + n_identificacao);
 
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");

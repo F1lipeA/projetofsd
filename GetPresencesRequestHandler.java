@@ -2,8 +2,6 @@ import java.net.*;
 import java.io.*;
 import java.util.*;
 
-
-
 public class GetPresencesRequestHandler extends Thread {
 	Socket ligacao;
 	Presences presences;
