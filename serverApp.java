@@ -16,7 +16,7 @@ public class serverApp {
 
         System.out.println("Numero de identificacao" + n_identificacao);
 
-        try {
+        /*try {
             MessageDigest md = MessageDigest.getInstance("MD5");
 
             byte[] messageDigest = md.digest(n_identificacao.getBytes());
@@ -32,7 +32,7 @@ public class serverApp {
         }
         catch (NoSuchAlgorithmException e){
             throw new RuntimeException(e);
-        }
+        }*/
         presencesServer ligarServidor = new presencesServer();
         ligarServidor.presencesServer();
     }
