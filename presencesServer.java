@@ -1,28 +1,41 @@
 import java.net.*;
 import java.io.*;
 
-public class presencesServer{
-    static int DEFAULT_PORT = 2000; 
+public class presencesServer {
+	static int DEFAULT_PORT=2000;
+	
+	public static void main(String[] args) {
+		int port=DEFAULT_PORT;
+		Presences presences = new Presences();
+			
+		ServerSocket servidor = null; 
+	
+// Create a server socket, bound to the specified port: API java.net.ServerSocket	
+		try{ //
+			servidor = new ServerSocket(port); //FUI EU
+	
+			System.out.println("Servidor a espera de ligacoes na porta " + port);
+		} catch (IOException e){
+			System.out.println("Exception: " + e);
+			System.exit(1);
+		} //FUI EU
 
-    public void presencesServer() throws Exception{
-        int port = DEFAULT_PORT; 
-        Presences presences = new Presences();
+		while(true) {
+			try {
 
-        ServerSocket ligacao = new ServerSocket(port);
-
-        System.out.println("Servidor à espera de ligações no porto " + port);
-
-        while(true){
-            try{
-                Socket rececao = ligacao.accept();
-
-                GetPresencesRequestHandler GPRH = new GetPresencesRequestHandler(rececao, presences);
-                GPRH.start();
-            }
-            catch (IOException e){
-                System.out.println("Erro na execução do servidor: " + e);
-                System.exit(1);
-            }
-        }
-    }
+// Listen for a connection to be made to the socket and acjacepts it: API java.net.ServerSocket				
+				
+				Socket ligacao = servidor.accept();
+				
+// Start a GetPresencesRequestHandler thread			
+				
+				GetPresencesRequestHandler requests = new GetPresencesRequestHandler(ligacao, presences); //FUI EU
+				requests.start(); //FUI EU
+				
+			} catch (IOException e) {
+				System.out.println("Erro na execucao do servidor: "+e);
+				System.exit(1);
+			}
+		}
+	}
 }

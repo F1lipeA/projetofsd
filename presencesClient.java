@@ -58,7 +58,7 @@ public class presencesClient {
             // Read the server response - read the data until null
 
             while ((msg = in.readLine()) != null) {
-                System.out.println(msg);
+                System.out.println(msg + "coisa linda");
             }
 
             // Close the Socket
